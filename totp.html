@@ -1,0 +1,19 @@
+<html>
+  <title>Prueba Totp</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+  <body>
+    <h1>Get your D2 code</h1>
+    <input type="button" value="Get D2 code" id="steam_code" />
+  </body>
+  <script>
+    var socket = io();
+    var boton_codigo = $("#steam_code");
+    boton_codigo.click(function () {
+      socket.emit("get code", false);
+    });
+    socket.on("code generated", function (msg) {
+      alert(msg);
+    });
+  </script>
+</html>
